@@ -1,0 +1,4 @@
+# Cached dataset files
+*.parquet
+*.json
+

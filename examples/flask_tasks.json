@@ -1,0 +1,31 @@
+{
+  "tasks": [
+    {
+      "id": "task_5829",
+      "source_pr": "https://github.com/pallets/flask/pull/5829",
+      "base_commit": "adf363679da2d9a5ddc564bb2da563c7ca083916",
+      "task_prompt": "fix typo in docs/appcontext.rst formatting issue in docs/design.rst",
+      "complexity": "low",
+      "files_changed": 2
+    },
+    {
+      "id": "task_5797",
+      "source_pr": "https://github.com/pallets/flask/pull/5797",
+      "base_commit": "5addaf833b2e8c7a616f89dd8ad5a44b07d7c000",
+      "task_prompt": "fix bug in test client when using follow_redirects the session shows the state from the first request instead of the last one. think the contexts are being restored in the wrong order after redirects. update test_redirect_keep_session to verify the fix and add changelog entry",
+      "complexity": "medium",
+      "files_changed": 3
+    },
+    {
+      "id": "task_5754",
+      "source_pr": "https://github.com/pallets/flask/pull/5754",
+      "base_commit": "a42c4d54a3e5cd56c0700479ede75157a748acd6",
+      "task_prompt": "remove the slsa provenance job from the publish workflow and clean up any references to it",
+      "complexity": "low",
+      "files_changed": 2
+    }
+  ],
+  "repository": "https://github.com/pallets/flask",
+  "generated_at": "2025-12-17"
+}
+

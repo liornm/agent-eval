@@ -1,0 +1,71 @@
+[project]
+name = "agent-eval"
+version = "0.1.0"
+description = "System for running Claude Code and Codex on VMs using Daytona and ACP"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "agent-client-protocol>=0.7.0",
+    "datasets>=4.4.2",
+    "daytona>=0.123.0",
+    "hjson>=3.1.0",
+    "numpy>=2.3.5",
+    "pydantic-settings>=2.12.0",
+    "python-dotenv>=1.2.1",
+    "pyyaml>=6.0.3",
+    "rich>=14.2.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.8",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D",        # pydocstyle - skip docstrings for now
+    "COM812",   # trailing comma (conflicts with formatter)
+    "ISC001",   # single line implicit string concat (conflicts with formatter)
+    "TC",       # type-checking imports - prefer simple imports over TYPE_CHECKING blocks
+    "TRY003",   # allow exception messages without variable assignment
+    "TRY301",   # allow raise in try block (overly strict)
+    "EM",       # allow string/f-string literals in exception messages
+]
+fixable = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S101",     # assert allowed in tests
+    "PLR2004",  # magic values allowed in tests
+    "ARG001",   # unused function arguments (fixtures)
+]
+"src/swebench_live.py" = [
+    "S311",     # random is used intentionally for reproducible seeding
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.pyright]
+reportUnusedParameter = false
